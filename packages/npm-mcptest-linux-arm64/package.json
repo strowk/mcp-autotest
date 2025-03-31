@@ -1,5 +1,5 @@
 {
-  "name": "@strowk/mcptest-linux-arm64",
+  "name": "mcptest-linux-arm64",
   "version": "0.0.4-beta.1",
   "os": [
     "linux",

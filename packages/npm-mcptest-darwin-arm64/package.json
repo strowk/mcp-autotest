@@ -1,5 +1,5 @@
 {
-  "name": "@strowk/mcptest-darwin-arm64",
+  "name": "mcptest-darwin-arm64",
   "version": "0.0.4-beta.1",
   "os": [
     "darwin"

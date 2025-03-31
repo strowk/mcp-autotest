@@ -1,5 +1,5 @@
 {
-  "name": "@strowk/mcptest-win32-arm64",
+  "name": "mcptest-win32-arm64",
   "version": "0.0.4-beta.1",
   "os": [
     "win32"
