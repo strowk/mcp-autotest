@@ -122,6 +122,7 @@ var runCommand = &cobra.Command{
 			fmt.Println("PASS")
 		} else {
 			fmt.Println("FAIL")
+			os.Exit(1)
 		}
 	},
 }
