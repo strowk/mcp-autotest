@@ -1,4 +1,4 @@
-<h4 align="center">Autotest MCP servers in language-agnostic way</h4>
+<h4 align="center">Autotest MCP servers in a language-agnostic way</h4>
 
 <h1 align="center">
    <img src="docs/images/logo.png" width="180"/>
