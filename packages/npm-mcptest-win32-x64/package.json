@@ -1,0 +1,23 @@
+{
+  "name": "@strowk/mcptest-win32-x64",
+  "version": "0.0.4-beta.1",
+  "os": [
+    "win32"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strowk/mcptest.git"
+  },
+  "keywords": [
+    "MCP"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/strowk/mcptest/issues"
+  },
+  "homepage": "https://github.com/strowk/mcptest#readme",
+  "description": "mcptest - Windows x64 build"
+}

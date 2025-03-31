@@ -1,0 +1,24 @@
+{
+  "name": "@strowk/mcptest-linux-x64",
+  "version": "0.0.4-beta.1",
+  "os": [
+    "linux",
+    "freebsd"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strowk/mcptest.git"
+  },
+  "keywords": [
+    "MCP"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/strowk/mcptest/issues"
+  },
+  "homepage": "https://github.com/strowk/mcptest#readme",
+  "description": "mcptest - Linux x64 build"
+}

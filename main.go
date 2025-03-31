@@ -1,0 +1,169 @@
+package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/spf13/cobra"
+	"github.com/strowk/foxy-contexts/pkg/foxytest"
+)
+
+const description = `mcptest run is a command to test Model Context Protocol servers with MCP Story format.
+
+DESCRIPTION
+		
+Test scenarios are defined in a files ending 
+with _test.yaml in the folder with test scenarios.
+
+Example running tests from testdata folder:
+mcptest run testdata go run main.go
+
+Yaml file with scenario can contain multiple documents 
+separated by '---' line. Each document must contain 'case' 
+field with the name of the test case, any number of in* 
+fields with input data, and out* fields with expected 
+output data.
+
+Example testdata/run_test.yaml:
+		
+case: List Tools
+in: {"jsonrpc": "2.0", "method": "tools/list", "id": 1}
+out: {
+  "jsonrpc": "2.0", 
+  "id": 1,
+  "result": { 
+    "tools": [
+      {
+        description": "My tool", 
+        inputSchema": {"type": "object"}, 
+        name": "my-tool"
+      }
+    ] 
+  }
+}
+
+When running server with flags - any arguments starting with dash,
+you would need to use '--' to separate flags for mcptest and flags for the server.
+For example in following command '--' added to separate flags for mcptest and flags for npx:
+mcptest -v run testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432
+`
+
+func main() {
+	// main_urfave()
+	main_cobra()
+}
+
+const (
+	verbose = "verbose"
+)
+
+var (
+	Verbose bool
+)
+
+func init() {
+	runCommand.Flags().BoolVarP(&Verbose, verbose, "v", false, "verbose output")
+	runCommand.SetUsageFunc(func(cmd *cobra.Command) error {
+		fmt.Println(`USAGE
+
+  mcptest [flags] run [--] path/to/folder/with/test/scenarios command-to-run-mcp-server [server-args]
+
+FLAGS
+
+  -v, --verbose   verbose output
+  -h, --help      help for mcptest
+
+EXAMPLES
+
+  mcptest run testdata go run main.go
+  mcptest run -v testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432`)
+		return nil
+	})
+	cobraCmd.AddCommand(runCommand)
+}
+
+var cobraCmd = &cobra.Command{
+	Use: "mcptest",
+}
+
+var runCommand = &cobra.Command{
+	Use:   "run",
+	Short: "functional language-agnostic tests for MCP servers",
+	Long:  description,
+	Args:  cobra.MinimumNArgs(2),
+	// This is for completion
+	ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
+		if len(args) == 0 {
+			// first arg is path to scenarios
+			return nil, cobra.ShellCompDirectiveFilterDirs
+		}
+		if len(args) == 1 {
+			// second arg is command to run server
+			return nil, cobra.ShellCompDirectiveDefault
+		}
+		return nil, cobra.ShellCompDirectiveDefault
+	},
+	Run: func(cmd *cobra.Command, args []string) {
+		t := &foxyT{}
+
+		ts, err := foxytest.Read(args[0])
+		if err != nil {
+			t.Fatal(err)
+		}
+		ts.WithExecutable(args[1], args[2:])
+		if Verbose {
+			t.verbose = true
+			ts.WithLogging()
+		}
+		ts.Run(t)
+		ts.AssertNoErrors(t)
+		if !t.hadErrors {
+			fmt.Println("PASS")
+		} else {
+			fmt.Println("FAIL")
+		}
+	},
+}
+
+func main_cobra() {
+	if err := cobraCmd.Execute(); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+}
+
+type foxyT struct {
+	hadErrors bool
+	verbose   bool
+}
+
+func (t *foxyT) Fatal(args ...any) {
+	log.Fatal(args...)
+}
+
+func (t *foxyT) Fatalf(format string, args ...any) {
+	log.Fatalf(format, args...)
+}
+
+func (t *foxyT) Errorf(format string, args ...any) {
+	t.hadErrors = true
+	log.Printf(format, args...)
+}
+
+func (t *foxyT) Log(args ...any) {
+	if t.verbose {
+		log.Println(args...)
+	}
+}
+
+func (t *foxyT) Logf(format string, args ...any) {
+	if t.verbose {
+		log.Printf(format, args...)
+	}
+}
+
+func (t *foxyT) Run(name string, f func(t foxytest.TestRunner)) bool {
+	f(t)
+	return !t.hadErrors
+}
