@@ -72,7 +72,7 @@ go install github.com/strowk/mcp-autotest@latest
 ## Usage
 
 ```bash
-mcp-autotest [flags] run [--] path/to/folder/with/test/scenarios command-to-run-mcp-server [server-args]
+mcp-autotest [flags] run path/to/tests/folder [--] command-to-run-server [server-args]
 ```
 
 Example:
