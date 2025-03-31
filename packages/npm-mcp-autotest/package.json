@@ -1,17 +1,17 @@
 {
   "name": "mcp-autotest",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "./index.js",
   "bin": {
     "mcp-autotest": "bin/cli"
   },
   "optionalDependencies": {
-    "@strowk/mcp-autotest-darwin-x64": "0.1.0",
-    "@strowk/mcp-autotest-darwin-arm64": "0.1.0",
-    "@strowk/mcp-autotest-linux-x64": "0.1.0",
-    "@strowk/mcp-autotest-linux-arm64": "0.1.0",
-    "@strowk/mcp-autotest-win32-x64": "0.1.0",
-    "@strowk/mcp-autotest-win32-arm64": "0.1.0"
+    "@strowk/mcp-autotest-darwin-x64": "0.2.0",
+    "@strowk/mcp-autotest-darwin-arm64": "0.2.0",
+    "@strowk/mcp-autotest-linux-x64": "0.2.0",
+    "@strowk/mcp-autotest-linux-arm64": "0.2.0",
+    "@strowk/mcp-autotest-win32-x64": "0.2.0",
+    "@strowk/mcp-autotest-win32-arm64": "0.2.0"
   },
   "repository": {
     "type": "git",
