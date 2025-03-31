@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "main": "./index.js",
   "bin": {
-    "mcpt": "bin/cli"
+    "mcp-autotest": "bin/cli"
   },
   "optionalDependencies": {
     "mcpt-darwin-x64": "0.0.3",
