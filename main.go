@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/spf13/cobra"
 	"github.com/strowk/foxy-contexts/pkg/foxytest"
@@ -12,6 +13,10 @@ import (
 const description = `mcp-autotest run is a command to test Model Context Protocol servers with MCP Story format.
 
 DESCRIPTION
+
+Tool would use stdio transport by default, or would use 
+streamable HTTP transport if --url (shotcut -u) flag is specified
+with url to the server, for example http://localhost:8080/mcp
 		
 Test scenarios are defined in a files ending 
 with _test.yaml in the folder with test scenarios.
@@ -56,14 +61,17 @@ func main() {
 
 const (
 	verbose = "verbose"
+	url     = "url"
 )
 
 var (
 	Verbose bool
+	Url     *string
 )
 
 func init() {
 	runCommand.Flags().BoolVarP(&Verbose, verbose, "v", false, "verbose output")
+	Url = runCommand.Flags().StringP(url, "u", "", "url to the server to test for streamable HTTP transport, if not specified, stdio is used")
 	runCommand.SetUsageFunc(func(cmd *cobra.Command) error {
 		fmt.Println(`USAGE
 
@@ -73,11 +81,13 @@ FLAGS
 
   -v, --verbose   verbose output
   -h, --help      help for mcp-autotest
+  -u, --url       url to the server to test for streamable HTTP transport, if not specified, stdio is used
 
 EXAMPLES
 
   mcp-autotest run testdata go run main.go
-  mcp-autotest run -v testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432`)
+  mcp-autotest run -v testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432
+  mcp-autotest run --url http://localhost:8080/mcp testdata go run main.go`)
 		return nil
 	})
 	cobraCmd.AddCommand(runCommand)
@@ -112,10 +122,22 @@ var runCommand = &cobra.Command{
 			t.Fatal(err)
 		}
 		ts.WithExecutable(args[1], args[2:])
+		if Url != nil {
+			if !strings.HasPrefix(*Url, "http://") && !strings.HasPrefix(*Url, "https://") {
+				t.Fatalf("URL should start with 'http://' or 'https://', but was %s", *Url)
+			}
+			ts.WithTransport(foxytest.NewTestTransportStreamableHTTP(*Url))
+		}
 		if Verbose {
 			t.verbose = true
 			ts.WithLogging()
+			if Url != nil {
+				fmt.Printf("running tests with server at %s\n", *Url)
+			} else {
+				fmt.Println("running tests with server at stdio")
+			}
 		}
+
 		ts.Run(t)
 		ts.AssertNoErrors(t)
 		if !t.hadErrors {
@@ -149,22 +171,27 @@ func (t *foxyT) Fatalf(format string, args ...any) {
 
 func (t *foxyT) Errorf(format string, args ...any) {
 	t.hadErrors = true
-	log.Printf(format, args...)
+	fmt.Printf(format, args...)
+	fmt.Println()
 }
 
 func (t *foxyT) Log(args ...any) {
 	if t.verbose {
-		log.Println(args...)
+		fmt.Println(args...)
 	}
 }
 
 func (t *foxyT) Logf(format string, args ...any) {
 	if t.verbose {
-		log.Printf(format, args...)
+		fmt.Printf(format, args...)
+		fmt.Println()
 	}
 }
 
 func (t *foxyT) Run(name string, f func(t foxytest.TestRunner)) bool {
+	if t.verbose {
+		fmt.Printf("RUN %s\n", name)
+	}
 	f(t)
 	return !t.hadErrors
 }
