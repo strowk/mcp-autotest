@@ -1,0 +1,31 @@
+# This is a test cases file. It contains a list of test cases in YAML format.
+# Each test case has variable number of inputs (keyst starting with 'in') and outputs (keys starting with 'out').
+# The test cases are separated by '---' (three dashes) on a new line, making it multi-document YAML file.
+# File name must end with '_test.yaml' to be recognized as a test cases file.
+
+case: List tools
+
+# requesting list of tools
+in: { "jsonrpc": "2.0", "method": "tools/list", "id": 1 }
+
+# expect one tool in the list
+out:
+  {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result":
+      {
+        "tools":
+          [
+            {
+              "description": "Run a read-only SQL query 2",
+              "inputSchema":
+                {
+                  "type": "object",
+                  "properties": { "sql": { "type": "string" } },
+                },
+              "name": "query",
+            },
+          ],
+      }
+  }

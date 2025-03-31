@@ -44,3 +44,70 @@ Example:
 mcp-autotest run testdata go run main.go
 mcp-autotest run -v testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432
 ```
+
+## Quick Demo
+
+In bash shell run following
+
+```bash
+
+# create folder for test data
+mkdir -p testdata
+
+# create test cases file
+cat << EOF > testdata/list_tools_test.yaml
+# This is a test cases file. It contains a list of test cases in YAML format.
+# Each test case has variable number of inputs (keyst starting with 'in') and outputs (keys starting with 'out').
+# The test cases are separated by '---' (three dashes) on a new line, making it multi-document YAML file.
+# File name must end with '_test.yaml' to be recognized as a test cases file.
+
+case: List tools
+
+# requesting list of tools
+in: { "jsonrpc": "2.0", "method": "tools/list", "id": 1 }
+
+# expect one tool in the list
+out:
+  {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result":
+      {
+        "tools":
+          [
+            {
+              "description": "Run a read-only SQL query",
+              "inputSchema":
+                {
+                  "type": "object",
+                  "properties": { "sql": { "type": "string" } },
+                },
+              "name": "query",
+            },
+          ],
+      }
+  }
+EOF
+
+# Now running autotest
+npx mcp-autotest run testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432
+```
+
+The output should simply print one word `PASS`.
+
+Now if you change something in line `"description": "Run a read-only SQL query",`, f.e to `"description": "Run a read-only SQL query 2"`, and run the last command again, you should see the output like this:
+
+```bash
+2025/03/31 22:23:39 actual json did not match expectation,
+ got: '{"id":1,"jsonrpc":"2.0","result":{"tools":[{"description":"Run a read-only SQL query","inputSchema":{"properties":{"sql":{"type":"string"}},"type":"object"},"name":"query"}]}}'
+ diff with expected:
+  "result": {
+    "tools": {
+      "0": {
+        "description": {
+        ^ value mismatch,
+expected string: 'Run a read-only SQL query 2',
+     got string: 'Run a read-only SQL query'
+FAIL
+```
+

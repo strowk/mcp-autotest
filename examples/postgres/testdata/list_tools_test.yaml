@@ -1,7 +1,7 @@
-# This is a foxytest file. It contains a list of test cases in YAML format.
+# This is a test cases file. It contains a list of test cases in YAML format.
 # Each test case has variable number of inputs (keyst starting with 'in') and outputs (keys starting with 'out').
 # The test cases are separated by '---' (three dashes) on a new line, making it multi-document YAML file.
-# File name must end with '_test.yaml' to be recognized as a foxytest file.
+# File name must end with '_test.yaml' to be recognized as a test cases file.
 
 case: List tools
 
@@ -18,7 +18,7 @@ out:
         "tools":
           [
             {
-              "description": "Run a read-only SQLquery",
+              "description": "Run a read-only SQL query",
               "inputSchema":
                 {
                   "type": "object",
