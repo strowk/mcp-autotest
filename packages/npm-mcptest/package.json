@@ -1,29 +1,29 @@
 {
-  "name": "mcptest",
+  "name": "mcp-autotest",
   "version": "0.0.1",
   "main": "./index.js",
   "bin": {
-    "mcptest": "bin/cli"
+    "mcpt": "bin/cli"
   },
   "optionalDependencies": {
-    "mcptest-darwin-x64": "0.0.1",
-    "mcptest-darwin-arm64": "0.0.1",
-    "mcptest-linux-x64": "0.0.1",
-    "mcptest-linux-arm64": "0.0.1",
-    "mcptest-win32-x64": "0.0.1",
-    "mcptest-win32-arm64": "0.0.1"
+    "mcpt-darwin-x64": "0.0.1",
+    "mcpt-darwin-arm64": "0.0.1",
+    "mcpt-linux-x64": "0.0.1",
+    "mcpt-linux-arm64": "0.0.1",
+    "mcpt-win32-x64": "0.0.1",
+    "mcpt-win32-arm64": "0.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/strowk/mcptest.git"
+    "url": "git+https://github.com/strowk/mcp-autotest.git"
   },
   "keywords": [
     "MCP"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/strowk/mcptest/issues"
+    "url": "https://github.com/strowk/mcp-autotest/issues"
   },
-  "homepage": "https://github.com/strowk/mcptest#readme",
-  "description": "mcptest - Windows ARM64 build"
+  "homepage": "https://github.com/strowk/mcp-autotest#readme",
+  "description": "mcpt - Windows ARM64 build"
 }

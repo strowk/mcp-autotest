@@ -1,4 +1,4 @@
-module github.com/strowk/mcptest
+module github.com/strowk/mcp-autotest
 
 // replace github.com/strowk/foxy-contexts => ../foxy-contexts
 

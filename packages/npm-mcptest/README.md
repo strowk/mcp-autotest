@@ -1,4 +1,4 @@
-# mcptest
+# mcp-autotest
 
 A simple tool that proxies input from MCP client to MCP server and returns the output back to the client, while also logging both to the file line by line indicating the direction of the data with a prefixes "in:" and "out:", resulting in a file that is normally valid YAML.
 
@@ -9,14 +9,14 @@ This could be pretty handy for testing and troubleshooting MCP clients and serve
 ## Usage
 
 ```bash
-mcptest <out-file> <command> [args...]
+mcp-autotest <out-file> <command> [args...]
 ```
 
 Some examples:
 ```bash
-mcptest ./server_log.yaml mcp-k8s-go
+mcp-autotest ./server_log.yaml mcp-k8s-go
 
-mcptest ./server_log.yaml npx @strowk/mcp-k8s
+mcp-autotest ./server_log.yaml npx @strowk/mcp-k8s
 ```
 
 You would probably configure it with corresponding client. For example, with Claude:
@@ -25,7 +25,7 @@ You would probably configure it with corresponding client. For example, with Cla
 {
     "mcpServers": {
         "my_server": {
-            "command": "mcptest",
+            "command": "mcp-autotest",
             "args": ["/path/to/log_file.yaml", "my_mcp_server_command"]
         }
     }
@@ -43,7 +43,7 @@ docker run --rm --name postgres-mcp-test -e POSTGRES_PASSWORD=thesecret -p 7777:
 , and you want to test it with mcp-server-postgres (run it in another terminal):
 
 ```bash
-mcptest log.yaml npx @modelcontextprotocol/server-postgres postgres://postgres:thesecret@localhost:7777
+mcp-autotest log.yaml npx @modelcontextprotocol/server-postgres postgres://postgres:thesecret@localhost:7777
 ```
 
 Now send these one by one:

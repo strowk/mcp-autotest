@@ -7,7 +7,7 @@ if [ -z "$new_version" ]; then
   exit 1
 fi
 
-previous_version="$(npm view ./packages/npm-mcptest version)"
+previous_version="$(npm view ./packages/npm-mcp-autotest version)"
 
 # replace previous version with new version in all .json files in ./packages folder 
 find ./packages -type f -name '*.json' -exec  sed -i '' -e "s/${previous_version}/${new_version}/g" {} \;

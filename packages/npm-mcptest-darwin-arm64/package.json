@@ -1,5 +1,5 @@
 {
-  "name": "mcptest-darwin-arm64",
+  "name": "mcpt-darwin-arm64",
   "version": "0.0.1",
   "os": [
     "darwin"
@@ -9,15 +9,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/strowk/mcptest.git"
+    "url": "git+https://github.com/strowk/mcp-autotest.git"
   },
   "keywords": [
     "MCP"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/strowk/mcptest/issues"
+    "url": "https://github.com/strowk/mcp-autotest/issues"
   },
-  "homepage": "https://github.com/strowk/mcptest#readme",
-  "description": "mcptest - Darwin ARM64 build"
+  "homepage": "https://github.com/strowk/mcp-autotest#readme",
+  "description": "mcpt - Darwin ARM64 build"
 }

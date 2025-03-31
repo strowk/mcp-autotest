@@ -1,4 +1,4 @@
-# mcptest
+# mcp-autotest
 
 A simple tool that allows to test your MCP servers using MCP protocol by defining YAML files with requests and responses.
 
@@ -19,28 +19,28 @@ out: {"result":{"protocolVersion":"2024-11-05","capabilities":{"resources":{},"t
 ## npm
 
 ```bash
-npm install -g mcptest
+npm install -g mcp-autotest
 ```
 
 ## Github Releases
 
-Download prebulit binaries from the [releases](https://github.com/strowk/mcptest/releases) page and put in your PATH
+Download prebulit binaries from the [releases](https://github.com/strowk/mcp-autotest/releases) page and put in your PATH
 
 ## Build from source
 
 ```bash
-go get github.com/strowk/mcptest
-go install github.com/strowk/mcptest
+go get github.com/strowk/mcp-autotest
+go install github.com/strowk/mcp-autotest
 ```
 
 ## Usage
 
 ```bash
-mcptest [flags] run [--] path/to/folder/with/test/scenarios command-to-run-mcp-server [server-args]
+mcp-autotest [flags] run [--] path/to/folder/with/test/scenarios command-to-run-mcp-server [server-args]
 ```
 
 Example:
 ```bash
-mcptest run testdata go run main.go
-mcptest run -v testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432
+mcp-autotest run testdata go run main.go
+mcp-autotest run -v testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432
 ```

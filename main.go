@@ -9,7 +9,7 @@ import (
 	"github.com/strowk/foxy-contexts/pkg/foxytest"
 )
 
-const description = `mcptest run is a command to test Model Context Protocol servers with MCP Story format.
+const description = `mcp-autotest run is a command to test Model Context Protocol servers with MCP Story format.
 
 DESCRIPTION
 		
@@ -17,7 +17,7 @@ Test scenarios are defined in a files ending
 with _test.yaml in the folder with test scenarios.
 
 Example running tests from testdata folder:
-mcptest run testdata go run main.go
+mcp-autotest run testdata go run main.go
 
 Yaml file with scenario can contain multiple documents 
 separated by '---' line. Each document must contain 'case' 
@@ -44,9 +44,9 @@ out: {
 }
 
 When running server with flags - any arguments starting with dash,
-you would need to use '--' to separate flags for mcptest and flags for the server.
-For example in following command '--' added to separate flags for mcptest and flags for npx:
-mcptest -v run testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432
+you would need to use '--' to separate flags for mcp-autotest and flags for the server.
+For example in following command '--' added to separate flags for mcp-autotest and flags for npx:
+mcp-autotest -v run testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432
 `
 
 func main() {
@@ -67,24 +67,24 @@ func init() {
 	runCommand.SetUsageFunc(func(cmd *cobra.Command) error {
 		fmt.Println(`USAGE
 
-  mcptest [flags] run [--] path/to/folder/with/test/scenarios command-to-run-mcp-server [server-args]
+  mcp-autotest [flags] run [--] path/to/folder/with/test/scenarios command-to-run-mcp-server [server-args]
 
 FLAGS
 
   -v, --verbose   verbose output
-  -h, --help      help for mcptest
+  -h, --help      help for mcp-autotest
 
 EXAMPLES
 
-  mcptest run testdata go run main.go
-  mcptest run -v testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432`)
+  mcp-autotest run testdata go run main.go
+  mcp-autotest run -v testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432`)
 		return nil
 	})
 	cobraCmd.AddCommand(runCommand)
 }
 
 var cobraCmd = &cobra.Command{
-	Use: "mcptest",
+	Use: "mcp-autotest",
 }
 
 var runCommand = &cobra.Command{
