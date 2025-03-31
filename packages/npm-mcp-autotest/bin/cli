@@ -25,7 +25,7 @@ const platformSpecificPackageName =
 function getBinaryPath() {
   try {
     // Resolving will fail if the optionalDependency was not installed
-    return require.resolve(`${platformSpecificPackageName}/bin/${binaryName}`);
+    return require.resolve(`@strowk/${platformSpecificPackageName}/bin/${binaryName}`);
   } catch (e) {
     return path.join(__dirname, "..", binaryName);
   }
