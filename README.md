@@ -1,13 +1,44 @@
-# mcp-autotest
+<h4 align="center">Golang-based MCP server connecting to Kubernetes</h4>
+
+<h1 align="center">
+   <img src="docs/images/logo.png" width="180"/>
+   <br/>
+   mcp-autotest
+</h1>
+
+<p align="center">
+  <a href="#installation">Installation</a> ⚙
+  <a href="#usage">Usage</a> ⚙
+  <a href="#quick-demo">Quick Demo</a>
+</p>
 
 A simple tool that allows to test your MCP servers using MCP protocol by defining YAML files with requests and responses.
 
 MCP cases file is a multi-document YAML, which defines every case as a separated document, like this:
 
 ```yaml
-case: Initialize
-in: {"jsonrpc":"2.0","id":0,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"testing","version":"0.0.1"}}}
-out: {"result":{"protocolVersion":"2024-11-05","capabilities":{"resources":{},"tools":{}},"serverInfo":{"name":"example-servers/postgres","version":"0.1.0"}},"jsonrpc":"2.0","id":0}
+case: Listing tools
+in: { "jsonrpc": "2.0", "method": "tools/list", "id": 1 }
+out:
+  {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result":
+      {
+        "tools":
+          [
+            {
+              "description": "Run a read-only SQL query",
+              "inputSchema":
+                {
+                  "type": "object",
+                  "properties": { "sql": { "type": "string" } },
+                },
+              "name": "query",
+            },
+          ],
+      }
+  }
 
 ---
 # next case...
