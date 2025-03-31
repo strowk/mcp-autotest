@@ -3,18 +3,18 @@ const childProcess = require("child_process");
 
 // Lookup table for all platforms and binary distribution packages
 const BINARY_DISTRIBUTION_PACKAGES = {
-  darwin_x64: "mcpt-darwin-x64",
-  darwin_arm64: "mcpt-darwin-arm64",
-  linux_x64: "mcpt-linux-x64",
-  linux_arm64: "mcpt-linux-arm64",
-  freebsd_x64: "mcpt-linux-x64",
-  freebsd_arm64: "mcpt-linux-arm64",
-  win32_x64: "mcpt-win32-x64",
-  win32_arm64: "mcpt-win32-arm64",
+  darwin_x64: "mcp-autotest-darwin-x64",
+  darwin_arm64: "mcp-autotest-darwin-arm64",
+  linux_x64: "mcp-autotest-linux-x64",
+  linux_arm64: "mcp-autotest-linux-arm64",
+  freebsd_x64: "mcp-autotest-linux-x64",
+  freebsd_arm64: "mcp-autotest-linux-arm64",
+  win32_x64: "mcp-autotest-win32-x64",
+  win32_arm64: "mcp-autotest-win32-arm64",
 };
 
 // Windows binaries end with .exe so we need to special case them.
-const binaryName = process.platform === "win32" ? "mcpt.exe" : "mcpt";
+const binaryName = process.platform === "win32" ? "mcp-autotest.exe" : "mcp-autotest";
 
 // Determine package name for this platform
 const platformSpecificPackageName =

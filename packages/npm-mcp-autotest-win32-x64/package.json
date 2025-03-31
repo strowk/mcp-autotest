@@ -1,5 +1,5 @@
 {
-  "name": "mcpt-win32-x64",
+  "name": "mcp-autotest-win32-x64",
   "version": "0.1.0-beta.1",
   "os": [
     "win32"
@@ -19,5 +19,5 @@
     "url": "https://github.com/strowk/mcp-autotest/issues"
   },
   "homepage": "https://github.com/strowk/mcp-autotest#readme",
-  "description": "mcpt - Windows x64 build"
+  "description": "mcp-autotest - Windows x64 build"
 }

@@ -6,12 +6,12 @@
     "mcp-autotest": "bin/cli"
   },
   "optionalDependencies": {
-    "mcpt-darwin-x64": "0.1.0-beta.1",
-    "mcpt-darwin-arm64": "0.1.0-beta.1",
-    "mcpt-linux-x64": "0.1.0-beta.1",
-    "mcpt-linux-arm64": "0.1.0-beta.1",
-    "mcpt-win32-x64": "0.1.0-beta.1",
-    "mcpt-win32-arm64": "0.1.0-beta.1"
+    "mcp-autotest-darwin-x64": "0.1.0-beta.1",
+    "mcp-autotest-darwin-arm64": "0.1.0-beta.1",
+    "mcp-autotest-linux-x64": "0.1.0-beta.1",
+    "mcp-autotest-linux-arm64": "0.1.0-beta.1",
+    "mcp-autotest-win32-x64": "0.1.0-beta.1",
+    "mcp-autotest-win32-arm64": "0.1.0-beta.1"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,5 @@
     "url": "https://github.com/strowk/mcp-autotest/issues"
   },
   "homepage": "https://github.com/strowk/mcp-autotest#readme",
-  "description": "mcpt - Windows ARM64 build"
+  "description": "mcp-autotest - Windows ARM64 build"
 }

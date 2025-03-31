@@ -1,5 +1,5 @@
 {
-  "name": "mcpt-darwin-arm64",
+  "name": "mcp-autotest-darwin-arm64",
   "version": "0.1.0-beta.1",
   "os": [
     "darwin"
@@ -19,5 +19,5 @@
     "url": "https://github.com/strowk/mcp-autotest/issues"
   },
   "homepage": "https://github.com/strowk/mcp-autotest#readme",
-  "description": "mcpt - Darwin ARM64 build"
+  "description": "mcp-autotest - Darwin ARM64 build"
 }
