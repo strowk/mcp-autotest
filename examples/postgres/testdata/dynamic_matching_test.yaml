@@ -1,0 +1,29 @@
+# This is a test cases file. It contains a list of test cases in YAML format.
+# This example demonstrates how to use the dynamic matching feature of the tool.
+
+case: List tools
+
+# requesting list of tools
+in: { "jsonrpc": "2.0", "method": "tools/list", "id": 1 }
+
+# expect one tool in the list
+out:
+  {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result":
+      {
+        "tools":
+          [
+            {
+              "description": !!re "^Run.*SQL.*$", # this will match 'Run a read-only SQL query'
+              "inputSchema":
+                {
+                  "type": "object",
+                  "properties": { "sql": { "type": "string" } },
+                },
+              "name": !!ere "qu/[a-z]+/",  # this will match 'query'
+            },
+          ],
+      }
+  }
