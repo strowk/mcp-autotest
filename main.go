@@ -122,7 +122,7 @@ var runCommand = &cobra.Command{
 			t.Fatal(err)
 		}
 		ts.WithExecutable(args[1], args[2:])
-		if Url != nil {
+		if Url != nil && *Url != "" {
 			if !strings.HasPrefix(*Url, "http://") && !strings.HasPrefix(*Url, "https://") {
 				t.Fatalf("URL should start with 'http://' or 'https://', but was %s", *Url)
 			}
