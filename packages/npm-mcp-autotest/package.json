@@ -1,17 +1,17 @@
 {
   "name": "mcp-autotest",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./index.js",
   "bin": {
     "mcpt": "bin/cli"
   },
   "optionalDependencies": {
-    "mcpt-darwin-x64": "0.0.2",
-    "mcpt-darwin-arm64": "0.0.2",
-    "mcpt-linux-x64": "0.0.2",
-    "mcpt-linux-arm64": "0.0.2",
-    "mcpt-win32-x64": "0.0.2",
-    "mcpt-win32-arm64": "0.0.2"
+    "mcpt-darwin-x64": "0.0.3",
+    "mcpt-darwin-arm64": "0.0.3",
+    "mcpt-linux-x64": "0.0.3",
+    "mcpt-linux-arm64": "0.0.3",
+    "mcpt-win32-x64": "0.0.3",
+    "mcpt-win32-arm64": "0.0.3"
   },
   "repository": {
     "type": "git",
