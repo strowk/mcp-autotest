@@ -1,6 +1,6 @@
 {
   "name": "@strowk/mcp-autotest-linux-x64",
-  "version": "0.1.0-beta.2",
+  "version": "0.1.0-beta.3",
   "os": [
     "linux",
     "freebsd"
