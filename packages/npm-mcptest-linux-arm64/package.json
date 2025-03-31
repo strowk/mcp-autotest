@@ -1,6 +1,6 @@
 {
   "name": "mcptest-linux-arm64",
-  "version": "0.0.1-beta.1",
+  "version": "0.0.1",
   "os": [
     "linux",
     "freebsd"
