@@ -29,8 +29,7 @@ Download prebulit binaries from the [releases](https://github.com/strowk/mcp-aut
 ## Build from source
 
 ```bash
-go get github.com/strowk/mcp-autotest
-go install github.com/strowk/mcp-autotest
+go install github.com/strowk/mcp-autotest@latest
 ```
 
 ## Usage
