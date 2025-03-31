@@ -41,9 +41,20 @@ mcp-autotest [flags] run [--] path/to/folder/with/test/scenarios command-to-run-
 
 Example:
 ```bash
+# start go MCP server and test via stdio transport
 mcp-autotest run testdata go run main.go
+# start Postgres MCP server and test via stdio transport
 mcp-autotest run -v testdata -- npx -y @modelcontextprotocol/server-postgres localhost:5432
+# start go MCP server and test via Streamable HTTP transport
+mcp-autotest run --url http://localhost:8080/mcp testdata go run main.go
 ```
+
+### Transports
+
+mcp-autotest by default would use stdio transport, but if you want to use HTTP transport instead, you can use `--url` flag to specify the URL of the MCP server. 
+The URL must be in the format `http://host:port/path` or `https://host:port/path`.
+
+Currently from Streamable HTTP only `POST` method is supported, but testing via `GET` is planned for the future.
 
 ## Quick Demo
 
