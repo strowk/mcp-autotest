@@ -7,6 +7,12 @@
 </h1>
 
 <p align="center">
+    <a href="https://github.com/strowk/mcp-autotest/actions/workflows/test.yaml"><img src="https://github.com/strowk/mcp-autotest/actions/workflows/test.yaml/badge.svg"></a>
+	<a href="https://github.com/strowk/mcp-autotest/actions/workflows/golangci-lint.yaml"><img src="https://github.com/strowk/mcp-autotest/actions/workflows/golangci-lint.yaml/badge.svg"/></a>
+    <a href="https://goreportcard.com/report/github.com/strowk/mcp-autotest"><img src="https://goreportcard.com/badge/github.com/strowk/mcp-autotest" alt="Go Report Card"></a>
+</p>
+
+<p align="center">
   <a href="#installation">Installation</a> ⚙
   <a href="#usage">Usage</a> ⚙
   <a href="#quick-demo">Quick Demo</a>
