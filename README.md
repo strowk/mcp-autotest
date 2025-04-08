@@ -51,6 +51,7 @@ out:
 # next case...
 ```
 
+Files must be named with `_test.yaml` suffix to be recognized as test cases files.
 
 ## Installation
 
